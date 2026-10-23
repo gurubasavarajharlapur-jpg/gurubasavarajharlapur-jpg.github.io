@@ -210,7 +210,7 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
 
 /* ---------- personal projects ---------- */
 .pgrid{display:grid;grid-template-columns:1fr;gap:18px}
-@media(min-width:820px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:760px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .pgrid>*{min-width:0}
 .pcard{border:1px solid var(--rule);background:var(--paper);padding:20px;box-shadow:var(--sh-1);
   display:flex;flex-direction:column;gap:11px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
@@ -721,6 +721,23 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
   <section id="personal" class="band"><div class="wrap sec">
     <div class="sec-h"><h2>Personal projects</h2><span class="tagline">Built on my own time · code is public</span></div>
     <div class="pgrid">
+
+      <article class="pcard">
+        <p class="pk">AI agent · Workflow automation · 2026</p>
+        <h3>A/B Test Workflow</h3>
+        <p class="pd">An A/B test normally starts with a seven-team kickoff meeting, and the problems surface
+        late. In this prototype a CRO submits <b>one brief</b>, an AI drafts <b>one test spec</b>, the spec is
+        checked, and all five teams approve their own section at the same time — tracked through six stages
+        on a dashboard.</p>
+        <ul class="bul">
+          <li>An n8n workflow drafts an eight-section spec. An <b>input check stops an incomplete brief before the AI ever sees it</b>; an output check then verifies every section, that the metric matches the brief and that no claim was dropped — a bad draft gets one retry, then goes to a person. Nothing is passed on silently.</li>
+          <li><b>Claims are checked against an approved library</b>, so Legal is asked only when a claim is new, and only about that claim. All five approval requests go out at once, teams decide in any order, and every decision is logged with its reviewer and timestamp in the final spec.</li>
+          <li>Node.js dashboard over SQLite: a six-stage tracker, an approvals inbox showing which team owes what, counts computed from stored records rather than typed in, and a downloadable final spec. Runs offline in mock mode and works down to 390px.</li>
+        </ul>
+        <div class="chips"><span class="chip">n8n</span><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">Claude API</span><span class="chip">LLM guardrails</span><span class="chip">Workflow automation</span></div>
+        <p class="disc">Personal prototype redesigning an e-commerce experimentation process. Runs locally; no
+        client data or systems involved. Walkthrough available on request.</p>
+      </article>
 
       <article class="pcard">
         <p class="pk">AI agent · Full-stack · 2026</p>
