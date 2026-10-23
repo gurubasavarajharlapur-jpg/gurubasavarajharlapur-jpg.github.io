@@ -208,6 +208,27 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
 .sign{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--rule);
   font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
 
+/* ---------- personal projects ---------- */
+.pgrid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:820px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pgrid>*{min-width:0}
+.pcard{border:1px solid var(--rule);background:var(--paper);padding:20px;box-shadow:var(--sh-1);
+  display:flex;flex-direction:column;gap:11px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.pcard:hover{transform:translateY(-3px);border-color:var(--rule-2);box-shadow:var(--sh-2)}
+.pcard .pk{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin:0}
+.pcard h3{font-weight:700;font-size:1.1rem;margin:0;letter-spacing:-.022em}
+.pcard .pd{margin:0;color:var(--ink-2);font-size:14.5px}
+.pcard ul.bul{gap:7px}
+.pcard ul.bul li{font-size:13.5px;padding-left:16px}
+.pcard .chips{margin-top:0}
+.pcard .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.plink{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  color:var(--ink);border:1px solid var(--rule-2);padding:7px 11px;transition:background .16s ease,border-color .16s ease,color .16s ease}
+.plink:hover{border-color:var(--blue);background:var(--blue-wash);color:var(--blue)}
+.plink.live{background:var(--ink);border-color:var(--ink);color:#fff}
+.plink.live:hover{background:var(--blue);border-color:var(--blue)}
+.disc{font-family:var(--mono);font-size:9.5px;letter-spacing:.03em;color:var(--ink-3);margin:0;line-height:1.55}
+
 @media print{
   @page{margin:14mm}
   body{font-size:11pt;background:#fff}
@@ -229,7 +250,7 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
   <div class="wrap bar-in">
     <div class="sig">Gurubasavaraj Harlapur</div>
     <nav class="nav" aria-label="Sections">
-      <a href="#about">About</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#personal">Personal</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
     </nav>
     <span class="pill"><span class="dot" aria-hidden="true"></span>Available now</span>
   </div>
@@ -433,7 +454,7 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
 
     <div class="panel" data-panel="p2" role="tabpanel" id="panel-p2" aria-labelledby="tab-p2" hidden>
       <div>
-        <p class="ptag">Capgemini · 2025—2026 · AI Engineer</p>
+        <p class="ptag">2025 — 2026 · AI Engineer</p>
         <h3>Employee productivity AI agent</h3>
         <p class="desc">An enterprise assistant that answers questions on internal policies, SOPs, regulations
         and historic cases in plain language — so nobody reads through document folders to find one clause.
@@ -502,7 +523,7 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
 
     <div class="panel" data-panel="p3" role="tabpanel" id="panel-p3" aria-labelledby="tab-p3" hidden>
       <div>
-        <p class="ptag">Capgemini · RAK Ceramics · AI Engineering Intern</p>
+        <p class="ptag">RAK Ceramics · AI Engineer</p>
         <h3>Sales &amp; operations copilot</h3>
         <p class="desc">A copilot for sales and product teams: ask for a specification, a comparable product or
         a quotation input and get it back in seconds instead of digging through catalogues and technical PDFs.</p>
@@ -697,7 +718,67 @@ ul.bul li b{color:var(--ink);font-weight:600;font-family:var(--display);font-siz
     </div>
   </div></section>
 
-  <section id="stack" class="band"><div class="wrap sec">
+  <section id="personal" class="band"><div class="wrap sec">
+    <div class="sec-h"><h2>Personal projects</h2><span class="tagline">Built on my own time · code is public</span></div>
+    <div class="pgrid">
+
+      <article class="pcard">
+        <p class="pk">AI agent · Full-stack · 2026</p>
+        <h3>Operation Agents</h3>
+        <p class="pd">Vendor invoices arrive by webhook and an agent works each case: validate, match to the
+        purchase order, then propose a payment, query the vendor, or escalate. The agent can only propose —
+        a named human approves every payment.</p>
+        <ul class="bul">
+          <li>TypeScript throughout — Fastify API, React dashboard, worker — with <b>one Postgres</b> holding the business tables, the job queue and an append-only hash-chained audit trail, so a case and its job commit in the same transaction.</li>
+          <li>Least privilege by design: the worker connects as a role that <b>cannot approve anything</b>.</li>
+          <li><b>32 hand-labelled eval cases</b> graded from the database end state — no model grades anything — plus 109 tests and 5 Playwright browser tests in CI.</li>
+        </ul>
+        <div class="chips"><span class="chip">TypeScript</span><span class="chip">Fastify</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Claude API</span><span class="chip">Playwright</span><span class="chip">CI</span></div>
+        <div class="links">
+          <a class="plink live" href="https://operation-agents.onrender.com" target="_blank" rel="noopener">Live demo ↗</a>
+          <a class="plink" href="https://github.com/gurubasavarajharlapur-jpg/Operation-Agents" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <p class="pk">AI agent · RAG · 2026</p>
+        <h3>Collections Copilot</h3>
+        <p class="pd">An agent for a debt-collection team: for one overdue account it retrieves the relevant
+        policy, picks a strategy, drafts the message in the customer's language, checks it for compliance,
+        and sends nothing until a human approves.</p>
+        <ul class="bul">
+          <li><b>LangGraph</b> workflow with typed shared state and SQLite checkpoints, a FastAPI service behind a Streamlit UI.</li>
+          <li>Compliance is <b>enforced in code, not prompted</b>: deterministic rule checks alongside an LLM reviewer, redrafting on failure and escalation after two retries.</li>
+          <li>Every step written to an audit log; seven tests cover the retry loop, the approval gate and 429 backoff. Runs with no API key in demo mode.</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">Streamlit</span><span class="chip">RAG</span><span class="chip">SQLite</span><span class="chip">Docker</span></div>
+        <div class="links">
+          <a class="plink" href="https://github.com/gurubasavarajharlapur-jpg/Collection-debt-Agent" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <p class="pk">Front-end · 2026</p>
+        <h3>Luxury property showcase</h3>
+        <p class="pd">A property-browsing experience — search, rank, shortlist, compare, price up and book —
+        built with no framework, no build step and no dependencies.</p>
+        <ul class="bul">
+          <li>An <b>explainable recommendation engine</b>: five questions score twelve residences on budget, bedrooms, type, outlook and intent, and every card shows the reasons behind its score.</li>
+          <li>Mortgage calculator, generated payment schedules, stackable offer eligibility and a three-way comparison table — all derived from the dataset rather than hard-coded.</li>
+          <li>URL-synced filters, a shortlist that survives a reload, and 29 vector illustrations generated deterministically by script.</li>
+        </ul>
+        <div class="chips"><span class="chip">JavaScript (ES6+)</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Responsive</span><span class="chip">Zero dependencies</span></div>
+        <p class="disc">Independent, non-commercial front-end demo. Not affiliated with or endorsed by any
+        property developer; all data in it is fictional.</p>
+        <div class="links">
+          <a class="plink" href="https://github.com/gurubasavarajharlapur-jpg/Sobha_Reality" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </div></section>
+
+  <section id="stack"><div class="wrap sec">
     <div class="sec-h"><h2>Stack</h2><span class="tagline">Working knowledge marked as such</span></div>
     <div>
       <div class="srow"><span class="sk">Backend</span><span class="sv">Java 8 · Spring Boot · Spring MVC · Spring Data JPA · Microservices architecture · RESTful API development · Application integration · Python · FastAPI</span></div>
